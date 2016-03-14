@@ -118,6 +118,7 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
+        loginButton.setReadPermissions("public_profile");
         loginButton.setFragment(this);
         loginButton.registerCallback(mCallbackManager, mCallback);
 
@@ -128,7 +129,7 @@ public class MainFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Profile profile =Profile.getCurrentProfile();
-        displayWelcomeMessage(profile);
+        //displayWelcomeMessage(profile);
     }
 
     public void onStop() {
