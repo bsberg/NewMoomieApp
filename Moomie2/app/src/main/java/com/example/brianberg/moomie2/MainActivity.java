@@ -1,5 +1,7 @@
 package com.example.brianberg.moomie2;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
     public void selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the planet to show based on
         // position
@@ -86,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentClass;
         switch(menuItem.getItemId()) {
             case R.id.nav_Home:
-                fragmentClass = HomeFragment.class;
+                fragmentClass = MainFragment.class;
                 break;
             case R.id.nav_Profile:
                 fragmentClass = MainFragment.class;
@@ -109,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
+        fragmentManager.beginTransaction().replace(R.id.contentPanel, fragment).commit();
         // Highlight the selected item, update the title, and close the drawer
         // Highlight the selected item has been done by NavigationView
         // menuItem.setChecked(true);

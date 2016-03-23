@@ -33,6 +33,8 @@ public class MainFragment extends Fragment {
     private AccessTokenTracker mTokenTracker;
     private ProfileTracker mProfileTracker;
 
+    private AccessToken accessToken;
+
     private FacebookCallback<LoginResult> mCallback= new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
@@ -54,6 +56,11 @@ public class MainFragment extends Fragment {
             mProfileTracker.startTracking();
             Profile profile = Profile.getCurrentProfile();
             displayWelcomeMessage(profile);
+
+            // start a new activity
+            Intent intent = new Intent(getActivity(), menu.class);
+            startActivity(intent);
+
         }
 
         @Override
