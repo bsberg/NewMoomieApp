@@ -115,7 +115,7 @@ public class menu extends AppCompatActivity
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_FacebookButton) {
             fragment = new Friends_Fragment();
-            Intent intent = new Intent(this, menu.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         else{
