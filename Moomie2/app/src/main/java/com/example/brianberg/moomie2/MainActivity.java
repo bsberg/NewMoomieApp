@@ -1,5 +1,7 @@
 package com.example.brianberg.moomie2;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,92 +41,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Find our drawer view
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        // Find our drawer view
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        // Setup drawer view
-        setupDrawerContent(nvDrawer);
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-
-
     }
-
-    private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
-    }
-
-    public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the planet to show based on
-        // position
-        Fragment fragment = null;
-
-        Class fragmentClass;
-        switch(menuItem.getItemId()) {
-            case R.id.nav_Home:
-                fragmentClass = HomeFragment.class;
-                break;
-            case R.id.nav_Profile:
-                fragmentClass = MainFragment.class;
-                break;
-            case R.id.nav_FriendsList:
-                fragmentClass = MainFragment.class;
-                break;
-            case R.id.nav_Best:
-                fragmentClass = MainFragment.class;
-                break;
-            default:
-                fragmentClass = MainFragment.class;
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-        // Highlight the selected item, update the title, and close the drawer
-        // Highlight the selected item has been done by NavigationView
-        // menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
-        mDrawer.closeDrawers();
-    }
-
-
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
 //    @Override
@@ -162,18 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 Uri.parse("android-app://com.example.brianberg.moomie2/http/host/path")
         );
         AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
