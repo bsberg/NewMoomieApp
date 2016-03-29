@@ -1,5 +1,6 @@
 package com.example.brianberg.moomie2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,6 +44,9 @@ public class menu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        setTitle("Moomie");
+        getSupportActionBar().setIcon(R.drawable.ic_action_cow);
+        //getActionBar().setIcon(R.drawable.)
     }
 
     @Override
@@ -95,6 +99,8 @@ public class menu extends AppCompatActivity
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_FacebookButton) {
             fragment = new Friends_Fragment();
+            Intent intent = new Intent(this, menu.class);
+            startActivity(intent);
         }
         else{
             fragment = new Friends_Fragment();
