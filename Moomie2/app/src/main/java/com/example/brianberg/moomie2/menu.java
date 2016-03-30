@@ -33,6 +33,13 @@ public class menu extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                // Swap to AddMovieOMDB Fragment
+                Fragment fragment;
+                fragment = new AddMovieOMDB();
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container, fragment);
+                fragmentTransaction.commit();
             }
         });
 
