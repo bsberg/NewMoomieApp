@@ -31,17 +31,17 @@ public class Profile_Fragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
-    public static Bitmap getFacebookProfilePicture(String userID){
-        try {
-            URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
-
-        return bitmap;
-    }
-
-    Bitmap bitmap = getFacebookProfilePicture(userId);
-
+//    public static Bitmap getFacebookProfilePicture(String userID){
+//        try {
+//            URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        Bitmap bitmap = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+//
+//        return bitmap;
+//    }
+//
+//    Bitmap bitmap = getFacebookProfilePicture(userId);
+//
 }
