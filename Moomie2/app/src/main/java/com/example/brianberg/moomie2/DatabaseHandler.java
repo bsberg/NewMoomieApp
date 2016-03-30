@@ -52,7 +52,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Add a new movie
-    public void addMovie(MovieObject movie) {
+    public void addMovieObject(MovieObject movie) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
