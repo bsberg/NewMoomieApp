@@ -4,17 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-<<<<<<< HEAD
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
-public class menu extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Intent intent = getIntent();
-=======
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -33,7 +22,6 @@ public class menu extends AppCompatActivity
         FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
->>>>>>> refs/remotes/origin/Cow
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,10 +35,6 @@ public class menu extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-<<<<<<< HEAD
-    }
-
-=======
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -109,8 +93,8 @@ public class menu extends AppCompatActivity
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_movie) {
             fragment = new MovieFragment();
-        } else if (id == R.id.nav_slideshow) {
-            fragment = new Friends_Fragment();
+        } else if (id == R.id.nav_profile) {
+            fragment = new Profile_Fragment();
         } else if (id == R.id.nav_manage) {
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_FacebookButton) {
@@ -130,5 +114,4 @@ public class menu extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
->>>>>>> refs/remotes/origin/Cow
 }
