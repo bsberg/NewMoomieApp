@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Jerry Sommerfeld on 4/1/2016.
+ * Used to parse the XML received from the OMDB
  */
 public class ParseOMDB {
 
@@ -72,14 +73,19 @@ public class ParseOMDB {
                 continue;
             }
             String name = parser.getName();
-            if(name.equals("title")) {
-                title = readTitle(parser);
-            } else if(name.equals("plot")) {
-                plot = readPlot(parser);
-            } else if(name.equals("id")) {
-                id = readID(parser);
-            } else {
-                skip(parser);
+            switch (name) {
+                case "title":
+                    title = readTitle(parser);
+                    break;
+                case "plot":
+                    plot = readPlot(parser);
+                    break;
+                case "id":
+                    id = readID(parser);
+                    break;
+                default:
+                    skip(parser);
+                    break;
             }
         }
         return new Entry(id, title, plot);
@@ -137,3 +143,4 @@ public class ParseOMDB {
     }
 
 }
+
