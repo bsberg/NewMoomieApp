@@ -75,7 +75,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
 
-        MovieObject movie = new MovieObject(Integer.parseInt(cursor.getString(0)),
+        MovieObject movie = new MovieObject(cursor.getString(0),
                 cursor.getString(1), cursor.getString(2));
         // return Movie
         return movie;
@@ -95,7 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 MovieObject movie = new MovieObject();
-                movie.setID(Integer.parseInt(cursor.getString(0)));
+                movie.setID(cursor.getString(0));
                 movie.setTitle(cursor.getString(1));
                 movie.setPlot(cursor.getString(2));
                 // Adding movie to list

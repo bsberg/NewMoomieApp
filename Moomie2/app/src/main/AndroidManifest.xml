@@ -41,7 +41,8 @@
         <activity
             android:name=".menu"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".AddMovieActivity"></activity>
     </application>
 
 </manifest>

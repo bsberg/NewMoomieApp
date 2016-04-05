@@ -4,7 +4,7 @@ package com.example.brianberg.moomie2;
  * Created by Jerry Sommerfeld on 3/29/2016.
  */
 public class MovieObject {
-    int _id;
+    String _id;
     String _title;
     String _plot;
 
@@ -14,19 +14,19 @@ public class MovieObject {
     }
 
     // Constructor
-    public MovieObject(int id, String title, String plot) {
+    public MovieObject(String id, String title, String plot) {
         this._id = id;
         this._title = title;
         this._plot = plot;
     }
 
     // Get the movieID
-    public int getID() {
+    public String getID() {
         return this._id;
     }
 
     // Setting movieID
-    public void setID(int id) {
+    public void setID(String id) {
         this._id = id;
     }
 
