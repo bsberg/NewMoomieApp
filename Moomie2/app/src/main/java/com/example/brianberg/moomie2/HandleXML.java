@@ -36,6 +36,10 @@ public class HandleXML {
         return id;
     }
 
+    public void setID(String idNew) {
+        this.id = idNew;
+    }
+
     public String getTitle() {
         return title;
     }

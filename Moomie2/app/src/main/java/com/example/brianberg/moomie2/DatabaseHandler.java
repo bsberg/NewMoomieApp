@@ -78,12 +78,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Get a single movie
-    public MovieObject getMovieObject(int id) {
+    public MovieObject getMovieObject(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_MOVIES, new String[]{KEY_ID,
                         KEY_TITLE, KEY_YEAR, KEY_RATING, KEY_DIRECTOR, KEY_ACTORS, KEY_PLOT, KEY_POSTER_URL, KEY_MOOMIE_RATING}, KEY_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null, null);
+                new String[]{id}, null, null, null, null);
 
         if(cursor != null){
             cursor.moveToFirst();

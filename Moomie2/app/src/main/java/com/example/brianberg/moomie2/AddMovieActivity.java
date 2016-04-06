@@ -1,5 +1,6 @@
 package com.example.brianberg.moomie2;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +28,7 @@ public class AddMovieActivity extends AppCompatActivity {
     private String url1 = "http://www.omdbapi.com/?t=";
     private String url2 = "&y=&plot=short&r=xml";
     private HandleXML obj;
-    Button b1;
+    Button b1, b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class AddMovieActivity extends AppCompatActivity {
         final DatabaseHandler db = new DatabaseHandler(this);
 
         b1 = (Button)findViewById(R.id.button);
+        b2 = (Button)findViewById(R.id.buttonVal);
+
+
 
         ed1 = (EditText)findViewById(R.id.editText);
         ed2 = (EditText)findViewById(R.id.editText2);
@@ -63,18 +67,45 @@ public class AddMovieActivity extends AppCompatActivity {
                     ed5.setText(obj.getActors());
                     ed6.setText(obj.getPlot());
 
+//                    db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getYear(), obj.getRating(), obj.getDirector(), obj.getActors(), obj.getPlot(), obj.getPosterURL()));
+//                    // Read all of the movies
+//                    Log.d("Reading: ", "Reading all movies..");
+//                    List<MovieObject> movies = db.getAllMovieObjects();
+//
+//                    for(MovieObject moo : movies) {
+//                        String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
+//                        Log.d("Movies: ", log);
+//                    }
+
+
+                }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ed2.getText().toString().equals("IMDB ID") ) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Invalid Movie ID", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else if( false /*obj.getID().equals( db.getMovieObject( obj.getID() ).getID() )*/ ) {
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "Movie already Exists", Toast.LENGTH_SHORT);
+                    toast2.show();
+                } else {
+
                     db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getYear(), obj.getRating(), obj.getDirector(), obj.getActors(), obj.getPlot(), obj.getPosterURL()));
                     // Read all of the movies
                     Log.d("Reading: ", "Reading all movies..");
                     List<MovieObject> movies = db.getAllMovieObjects();
 
-                    for(MovieObject moo : movies) {
+                    for (MovieObject moo : movies) {
                         String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
                         Log.d("Movies: ", log);
                     }
-
-
+                    Toast success = Toast.makeText(getApplicationContext(), "Added " + obj.getTitle() + " to Moomie", Toast.LENGTH_LONG);
+                    success.show();
+                    finish();
                 }
+            }
         });
     }
 }

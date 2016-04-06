@@ -28,10 +28,6 @@ public class MovieFragment extends Fragment {
         DatabaseHandler db = new DatabaseHandler(getContext());
 
         //CRUD Operations
-        Log.d("Insert: ", "Inserting...");
-//        db.addMovieObject(new MovieObject("1", "The Revenant", "Leo gets mauled by a bear"));
-//        db.addMovieObject(new MovieObject("2", "Star Wars", "Rebels blow up a space station"));
-//        db.addMovieObject(new MovieObject("3", "Animal House", "Toga, toga, toga!"));
 
         // Read all of the movies
         Log.d("Reading: ", "Reading all movies..");

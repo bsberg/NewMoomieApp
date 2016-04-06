@@ -93,6 +93,14 @@
         android:layout_alignEnd="@+id/editText3"
         android:text="Plot" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Validate and add to Moomie"
+        android:id="@+id/buttonVal"
+        android:layout_below="@+id/editText6"
+        android:layout_centerHorizontal="true" />
+
 
 
 </RelativeLayout>
