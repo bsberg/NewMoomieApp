@@ -31,8 +31,12 @@ public class menu extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Add a new movie to the Moomie Database", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                // Swap to AddMovie Activity
+                Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
+                startActivity(intent);
             }
         });
 
