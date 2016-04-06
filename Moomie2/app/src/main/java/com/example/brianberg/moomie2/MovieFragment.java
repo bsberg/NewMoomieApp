@@ -36,24 +36,25 @@ public class MovieFragment extends Fragment {
         for(MovieObject moo : movies) {
             String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
             Log.d("Movies: ", log);
+            Log.d("Poster",moo.getPosterURL());
         }
 
-        // Read all of the movies
-        Log.d("Deleting: ", "Deleting all movies..");
-        List<MovieObject> moviesDel = db.getAllMovieObjects();
-
-        for(MovieObject moo : moviesDel) {
-            db.deleteMovieObject(moo);
-        }
-
-        // Read all of the movies
-        Log.d("Reading: ", "Reading all movies that remain..");
-        List<MovieObject> moviesRem = db.getAllMovieObjects();
-
-        for(MovieObject moo : moviesRem) {
-            String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
-            Log.d("Movies: ", log);
-        }
+//        // Read all of the movies
+//        Log.d("Deleting: ", "Deleting all movies..");
+//        List<MovieObject> moviesDel = db.getAllMovieObjects();
+//
+//        for(MovieObject moo : moviesDel) {
+//            db.deleteMovieObject(moo);
+//        }
+//
+//        // Read all of the movies
+//        Log.d("Reading: ", "Reading all movies that remain..");
+//        List<MovieObject> moviesRem = db.getAllMovieObjects();
+//
+//        for(MovieObject moo : moviesRem) {
+//            String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
+//            Log.d("Movies: ", log);
+//        }
 
 
         // Inflate the layout for this fragment

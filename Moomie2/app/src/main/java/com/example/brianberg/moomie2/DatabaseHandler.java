@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,9 +85,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_MOVIES, new String[]{KEY_ID,
                         KEY_TITLE, KEY_YEAR, KEY_RATING, KEY_DIRECTOR, KEY_ACTORS, KEY_PLOT, KEY_POSTER_URL, KEY_MOOMIE_RATING}, KEY_ID + "=?",
                 new String[]{id}, null, null, null, null);
+        Log.d("Database cursor", "" + cursor.getColumnCount());
+        Log.d("Database cursor", "" + cursor);
 
         if(cursor != null){
             cursor.moveToFirst();
+        }
+        Log.d("Database cursor", "" + cursor.getColumnCount());
+        Log.d("Database cursor", "" + cursor.getCount());
+
+        if(cursor.getCount() == 0) {
+            return null;
         }
 
         // return Movie

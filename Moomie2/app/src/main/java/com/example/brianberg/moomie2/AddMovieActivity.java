@@ -87,10 +87,7 @@ public class AddMovieActivity extends AppCompatActivity {
                 if(ed2.getText().toString().equals("IMDB ID") ) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Invalid Movie ID", Toast.LENGTH_SHORT);
                     toast.show();
-                } else if( false /*obj.getID().equals( db.getMovieObject( obj.getID() ).getID() )*/ ) {
-                    Toast toast2 = Toast.makeText(getApplicationContext(), "Movie already Exists", Toast.LENGTH_SHORT);
-                    toast2.show();
-                } else {
+                } else if( db.getMovieObject( obj.getID() ) == null ) {
 
                     db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getYear(), obj.getRating(), obj.getDirector(), obj.getActors(), obj.getPlot(), obj.getPosterURL()));
                     // Read all of the movies
@@ -104,6 +101,10 @@ public class AddMovieActivity extends AppCompatActivity {
                     Toast success = Toast.makeText(getApplicationContext(), "Added " + obj.getTitle() + " to Moomie", Toast.LENGTH_LONG);
                     success.show();
                     finish();
+
+                } else {
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "Movie \"" + obj.getTitle() + "\" already exists", Toast.LENGTH_SHORT);
+                    toast2.show();
                 }
             }
         });

@@ -14,13 +14,13 @@ import java.net.URL;
  * Parses the xml from the OMDBAPI
  */
 public class HandleXML {
-    private String id = "imdbID";
-    private String title = "title";
-    private String year = "year";
-    private String rating = "rating";
-    private String director = "director";
-    private String actors = "actors";
-    private String plot = "plot";
+    private String id = "IMDB ID";
+    private String title = "Title";
+    private String year = "Year";
+    private String rating = "Rating";
+    private String director = "Director";
+    private String actors = "Actors";
+    private String plot = "Plot";
     private String posterURL = "";
 
 
