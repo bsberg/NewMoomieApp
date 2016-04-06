@@ -34,14 +34,9 @@ public class menu extends AppCompatActivity
                 Snackbar.make(view, "Add a new movie to the Moomie Database", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                // Swap to AddMovieOMDB Fragment
-//                Fragment fragment;
-//                fragment = new AddMovieOMDB();
-//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.main_container, fragment);
-//                fragmentTransaction.commit();
-//                Intent intent = new Intent(getActivity(), AddMovieActivity.class);
-//                startActivity(intent);
+                // Swap to AddMovie Activity
+                Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
+                startActivity(intent);
             }
         });
 

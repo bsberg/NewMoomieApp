@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class AddMovieActivity extends AppCompatActivity {
-    EditText ed1, ed2, ed3, ed4;
+    EditText ed1, ed2, ed3, ed4, ed5, ed6;
 
     private String url1 = "http://www.omdbapi.com/?t=";
     private String url2 = "&y=&plot=short&r=xml";
@@ -41,11 +41,14 @@ public class AddMovieActivity extends AppCompatActivity {
         ed2 = (EditText)findViewById(R.id.editText2);
         ed3 = (EditText)findViewById(R.id.editText3);
         ed4 = (EditText)findViewById(R.id.editText4);
+        ed5 = (EditText)findViewById(R.id.editText5);
+        ed6 = (EditText)findViewById(R.id.editText6);
 
         b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){
                     String url = ed1.getText().toString();
+                    url = url.replaceAll("\\s","+");
                     String finalUrl = url1 + url + url2;
                     ed2.setText(finalUrl);
                     Log.d("OMDB http",finalUrl);
@@ -55,10 +58,12 @@ public class AddMovieActivity extends AppCompatActivity {
 
                     while (obj.parsingComplete);
                     ed2.setText(obj.getID());
-                    ed3.setText(obj.getTitle());
-                    ed4.setText(obj.getPlot());
+                    ed3.setText(obj.getTitle() + " (" + obj.getYear() + ") - " + obj.getRating());
+                    ed4.setText(obj.getDirector());
+                    ed5.setText(obj.getActors());
+                    ed6.setText(obj.getPlot());
 
-                    db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getPlot()));
+                    db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getYear(), obj.getRating(), obj.getDirector(), obj.getActors(), obj.getPlot(), obj.getPosterURL()));
                     // Read all of the movies
                     Log.d("Reading: ", "Reading all movies..");
                     List<MovieObject> movies = db.getAllMovieObjects();

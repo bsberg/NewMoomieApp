@@ -16,7 +16,14 @@ import java.net.URL;
 public class HandleXML {
     private String id = "imdbID";
     private String title = "title";
+    private String year = "year";
+    private String rating = "rating";
+    private String director = "director";
+    private String actors = "actors";
     private String plot = "plot";
+    private String posterURL = "";
+
+
     private String urlString = null;
     private XmlPullParserFactory xmlFactoryObject;
     public volatile boolean parsingComplete = true;
@@ -37,33 +44,52 @@ public class HandleXML {
         return plot;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public String getPosterURL() {
+        return posterURL;
+    }
+
     public void parseXMLAndStoreIt(XmlPullParser myParser) {
         int event;
         String text = null;
 
         try {
             event = myParser.getEventType();
-            Log.d("Parser","Started Parser");
 
             while (event != XmlPullParser.END_DOCUMENT) {
 
                 String name = myParser.getName();
-                Log.d("Parser","loop");
 
                 switch (event) {
                     case XmlPullParser.START_TAG:
                         if (name.equals("movie")){
-                            Log.d("OMDB","reading wrong things");
                             id = myParser.getAttributeValue(17);
                             title = myParser.getAttributeValue(0);
+                            year = myParser.getAttributeValue(1);
+                            rating = myParser.getAttributeValue(2);
+                            director = myParser.getAttributeValue(6);
+                            actors = myParser.getAttributeValue(8);
                             plot = myParser.getAttributeValue(9);
-                        } else {
-
-                        }
+                            posterURL = myParser.getAttributeValue(13);
+                            Log.d("OMDB",posterURL);
+                        } else { }
                         break;
                     case XmlPullParser.TEXT:
-                        text = myParser.getText();
-                        Log.d("OMDB","READING TEXT");
                         break;
                     case XmlPullParser.END_TAG:
                         break;
