@@ -115,4 +115,10 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
+
+    /** Called when user clicks next button */
+    public void skipFacebook(View view){
+        Intent intent = new Intent(this, menu.class);
+        startActivity(intent);
+    }
 }

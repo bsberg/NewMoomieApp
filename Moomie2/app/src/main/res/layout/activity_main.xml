@@ -28,13 +28,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skip Facebook"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="skipFacebook"/>
+
             <!-- The main content view where fragments are loaded -->
         </LinearLayout>
 
 
 
         <include layout="@layout/content_main"
-            android:id="@+id/LoginButton" />
+            android:id="@+id/skipButton" />
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -42,7 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email" />
+            android:src="@android:drawable/ic_media_next"
+            android:onClick="skipFacebook"/>
+
 
     </android.support.v4.widget.DrawerLayout>
 
