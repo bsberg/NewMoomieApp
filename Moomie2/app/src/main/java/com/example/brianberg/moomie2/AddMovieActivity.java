@@ -1,23 +1,14 @@
 package com.example.brianberg.moomie2;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 
-import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -38,8 +29,6 @@ public class AddMovieActivity extends AppCompatActivity {
 
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.buttonVal);
-
-
 
         ed1 = (EditText)findViewById(R.id.editText);
         ed2 = (EditText)findViewById(R.id.editText2);
@@ -67,17 +56,6 @@ public class AddMovieActivity extends AppCompatActivity {
                     ed5.setText(obj.getActors());
                     ed6.setText(obj.getPlot());
 
-//                    db.addMovieObject(new MovieObject(obj.getID(), obj.getTitle(), obj.getYear(), obj.getRating(), obj.getDirector(), obj.getActors(), obj.getPlot(), obj.getPosterURL()));
-//                    // Read all of the movies
-//                    Log.d("Reading: ", "Reading all movies..");
-//                    List<MovieObject> movies = db.getAllMovieObjects();
-//
-//                    for(MovieObject moo : movies) {
-//                        String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
-//                        Log.d("Movies: ", log);
-//                    }
-
-
                 }
         });
 
@@ -98,7 +76,7 @@ public class AddMovieActivity extends AppCompatActivity {
                         String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
                         Log.d("Movies: ", log);
                     }
-                    Toast success = Toast.makeText(getApplicationContext(), "Added " + obj.getTitle() + " to Moomie", Toast.LENGTH_LONG);
+                    Toast success = Toast.makeText(getApplicationContext(), "Added \"" + obj.getTitle() + "\" to Moomie", Toast.LENGTH_LONG);
                     success.show();
                     finish();
 
