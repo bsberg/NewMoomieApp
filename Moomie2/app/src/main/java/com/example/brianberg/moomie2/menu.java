@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -102,7 +103,9 @@ public class menu extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             fragment = new Profile_Fragment();
         } else if (id == R.id.nav_tools) {
+            Log.d("toolsFragmentStart:", "Begining Transaction");
             fragment = new ToolsFragment();
+            Log.d("toolsFragmentStart: ", "New Tools Fragment Created");
         } else if (id == R.id.nav_FacebookButton) {
             fragment = new Friends_Fragment();
             Intent intent = new Intent(this, MainActivity.class);
@@ -114,6 +117,7 @@ public class menu extends AppCompatActivity
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_container, fragment);
+        Log.d("toolsFragmentStart: ", "New Tools Fragment Loaded");
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

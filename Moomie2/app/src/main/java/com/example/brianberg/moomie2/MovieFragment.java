@@ -29,7 +29,8 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setContentView(R.layout.fragment_movie);
+        View view = inflater.inflate(R.layout.fragment_movie, container, false);
+        // getActivity().setContentView(R.layout.fragment_movie);
 
 
         DatabaseHandler db = new DatabaseHandler(getActivity());
@@ -50,13 +51,13 @@ public class MovieFragment extends Fragment {
         }
 
         // Create Adapter
-        listView = (ListView) getActivity().findViewById(R.id.movie_list_view_blah);
+        listView = (ListView) view.findViewById(R.id.movie_list_view_blah);
         adapter = new MovieAdapter(getContext(), movies);
 
         // Set Adapter
         listView.setAdapter(adapter);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false);
+        return view;
     }
 }

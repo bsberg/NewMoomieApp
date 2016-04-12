@@ -16,10 +16,11 @@
         android:id="@+id/ImageToSwitch"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/cow"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:src="@drawable/cow"/>
 
     <TextView
+        android:id="@+id/SaltText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize = "@dimen/abc_text_size_title_material_toolbar"
