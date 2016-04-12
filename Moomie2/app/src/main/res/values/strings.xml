@@ -17,6 +17,7 @@
     <string name="xml_error">There was an error with the XML to parse</string>
     <string name="page_title">Moomie</string>
     <string name="updated">OMDB has updated</string>
+    <string name="title_activity_movie">MovieActivity</string>
 
 
 </resources>

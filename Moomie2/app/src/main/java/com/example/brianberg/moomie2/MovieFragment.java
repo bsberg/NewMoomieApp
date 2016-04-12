@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,6 +19,9 @@ import java.util.List;
  */
 public class MovieFragment extends Fragment {
 
+    ListView listView;
+    MovieAdapter adapter;
+
     public MovieFragment() {
         // Required empty public constructor
     }
@@ -24,31 +29,34 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        DatabaseHandler db = new DatabaseHandler(getContext());
+        getActivity().setContentView(R.layout.fragment_movie);
+
+
+        DatabaseHandler db = new DatabaseHandler(getActivity());
 
         //CRUD Operations: Create, Update, Delete can go here:
 
         // Read all of the movies
         Log.d("Movie Fragment", "Reading all movies...");
-        List<MovieObject> movies = db.getAllMovieObjects();
+        List<MovieObject> moovies = db.getAllMovieObjects();
+        ArrayList<MovieObject> movies = new ArrayList<MovieObject>(moovies);
 
-        for(MovieObject moo : movies) {
+
+
+        for (MovieObject moo : movies) {
             String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
             Log.d("Movie Fragment", log);
             Log.d("Movie Fragment", "Poster: " + moo.getPosterURL());
         }
 
-//        // Delete all of the movies if needed
-//        Log.d("Deleting: ", "Deleting all movies..");
-//        List<MovieObject> moviesDel = db.getAllMovieObjects();
-//        for(MovieObject moo : moviesDel) {
-//            db.deleteMovieObject(moo);
-//        }
+        // Create Adapter
+        listView = (ListView) getActivity().findViewById(R.id.movie_list_view_blah);
+        adapter = new MovieAdapter(getContext(), movies);
+
+        // Set Adapter
+        listView.setAdapter(adapter);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false);
     }
-
-
-
 }

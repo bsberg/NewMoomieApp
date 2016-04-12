@@ -96,11 +96,13 @@ public class menu extends AppCompatActivity
             // Handle the camera action
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_movie) {
+            //Intent intent = new Intent(this, MovieActivity.class);
+            //startActivity(intent);
             fragment = new MovieFragment();
         } else if (id == R.id.nav_profile) {
             fragment = new Profile_Fragment();
-        } else if (id == R.id.nav_manage) {
-            fragment = new Friends_Fragment();
+        } else if (id == R.id.nav_tools) {
+            fragment = new ToolsFragment();
         } else if (id == R.id.nav_FacebookButton) {
             fragment = new Friends_Fragment();
             Intent intent = new Intent(this, MainActivity.class);
