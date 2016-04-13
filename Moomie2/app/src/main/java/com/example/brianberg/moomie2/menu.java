@@ -28,18 +28,12 @@ public class menu extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Add a new movie to the Moomie Database", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        Fragment fragment = new MovieFragment();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, fragment);
+        Log.d("toolsFragmentStart: ", "New Tools Fragment Loaded");
+        fragmentTransaction.commit();
 
-                // Swap to AddMovie Activity
-                Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
-                startActivity(intent);
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,6 +74,9 @@ public class menu extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // Swap to AddMovie Activity
+            Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
+            startActivity(intent);
             return true;
         }
 

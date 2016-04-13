@@ -147,8 +147,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Update a single MovieObject
     public int updateMovieObject(MovieObject movie) {
         SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("Database","Update " + movie.getTitle() + " moomie rating to " + movie.getMoomieRating());
 
         ContentValues values = new ContentValues();
+        values.put(KEY_ID, movie.getID());
         values.put(KEY_TITLE, movie.getTitle()); // Movie Title
         values.put(KEY_YEAR, movie.getYear()); // Movie Release year
         values.put(KEY_RATING, movie.getRating()); // Movie Rating
@@ -158,9 +160,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_POSTER_URL, movie.getPosterURL()); // URL to poster
         values.put(KEY_MOOMIE_RATING, movie.getMoomieRating()); //Moomie Rating
 
+        Log.d("Database", "Update " + movie.getTitle() + " moomie rating to " + movie.getMoomieRating());
+
         // updating row
-        return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
-                new String[] { movie.getID() });
+        int id = db.update(TABLE_MOVIES, values, KEY_ID + " = ?", new String[] {movie.getID() });
+        db.close();
+        return id;
     }
 
     // Delete a single MovieObject

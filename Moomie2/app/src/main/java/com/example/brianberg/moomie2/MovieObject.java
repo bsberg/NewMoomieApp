@@ -30,7 +30,7 @@ public class MovieObject {
 
     Bitmap _posterBitMap;
 
-    private int moomieRating;
+    int moomieRating;
 
     // Empty Constructor
     public MovieObject() {

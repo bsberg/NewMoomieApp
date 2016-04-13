@@ -53,8 +53,26 @@ public class MovieAdapter extends ArrayAdapter<MovieObject> {
         TextView movieTitle = (TextView) convertView.findViewById(R.id.movie_title);
         ImageView moviePoster = (ImageView) convertView.findViewById(R.id.movie_poster);
 
-        movieRating.setText(movieObject._rating);
-        movieTitle.setText(movieObject._title);
+        switch (movieObject.moomieRating) {
+            case 0:
+                movieRating.setText("A");
+                break;
+            case 1:
+                movieRating.setText("B");
+                break;
+            case 2:
+                movieRating.setText("C");
+                break;
+            case 3:
+                movieRating.setText("D");
+                break;
+            case 4:
+                movieRating.setText("F");
+                break;
+        }
+
+        //movieRating.setText("" + movieObject.moomieRating);
+        movieTitle.setText(movieObject._title + " (" + movieObject._year + ") - " + movieObject._rating);
 
         moviePoster.setImageBitmap(movieObject.get_posterBitMap());
         return convertView;

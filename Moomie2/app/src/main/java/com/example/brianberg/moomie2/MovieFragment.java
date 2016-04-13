@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class MovieFragment extends Fragment {
         // getActivity().setContentView(R.layout.fragment_movie);
 
 
-        DatabaseHandler db = new DatabaseHandler(getActivity());
+        final DatabaseHandler db = new DatabaseHandler(getActivity());
 
         //CRUD Operations: Create, Update, Delete can go here:
 
@@ -50,9 +51,46 @@ public class MovieFragment extends Fragment {
             Log.d("Movie Fragment", "Poster: " + moo.getPosterURL());
         }
 
+        // Delete movies if nececssary
+//        for (MovieObject moo : movies) {
+//            Log.d("Database","Deleting Movie");
+//            db.deleteMovieObject(moo);
+//        }
+
         // Create Adapter
         listView = (ListView) view.findViewById(R.id.movie_list_view_blah);
         adapter = new MovieAdapter(getContext(), movies);
+
+        // Check for clicks
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MovieObject object = (MovieObject) parent.getItemAtPosition(position);
+                String item = object.getTitle();
+
+                switch (object.getMoomieRating()) {
+                    case 0:
+                        object.setMoomieRating(1);
+                        break;
+                    case 1:
+                        object.setMoomieRating(2);
+                        break;
+                    case 2:
+                        object.setMoomieRating(3);
+                        break;
+                    case 3:
+                        object.setMoomieRating(4);
+                        break;
+                    case 4:
+                        object.setMoomieRating(0);
+                        break;
+                }
+
+                db.updateMovieObject(object);
+                adapter.notifyDataSetChanged();
+                view.setAlpha(1);
+            }
+        });
 
         // Set Adapter
         listView.setAdapter(adapter);
