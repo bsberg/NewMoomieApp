@@ -27,19 +27,11 @@ import java.util.List;
  * Created by Bob on 4/9/2016.
  */
 public class MovieAdapter extends ArrayAdapter<MovieObject> {
-    List list = new ArrayList();
-    Bitmap bitmap = null;
 
     public MovieAdapter(Context context, ArrayList<MovieObject> movies) {
         super(context, 0, movies);
     }
 
-    static class DataHandler
-    {
-        ImageView Poster;
-        TextView title;
-        TextView rating;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup Parent) {

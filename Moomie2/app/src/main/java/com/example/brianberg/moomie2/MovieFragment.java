@@ -44,7 +44,7 @@ public class MovieFragment extends Fragment {
         ArrayList<MovieObject> movies = new ArrayList<MovieObject>(moovies);
 
 
-
+        // Log movies to see if movies correct
         for (MovieObject moo : movies) {
             String log = "Id: " + moo.getID() + ", Title: " + moo.getTitle() + ", Plot: " + moo.getPlot();
             Log.d("Movie Fragment", log);
