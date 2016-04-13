@@ -101,10 +101,12 @@ public class menu extends AppCompatActivity
             fragment = new Profile_Fragment();
         } else if (id == R.id.nav_tools) {
             Log.d("toolsFragmentStart:", "Begining Transaction");
-            fragment = new ToolsFragment();
+            fragment = new Profile_Fragment();
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             Log.d("toolsFragmentStart: ", "New Tools Fragment Created");
         } else if (id == R.id.nav_FacebookButton) {
-            fragment = new Friends_Fragment();
+            fragment = new Profile_Fragment();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

@@ -37,18 +37,31 @@ public class Friends_Fragment extends Fragment {
         String jsondata = intent.getStringExtra("jsondata");
         JSONArray friendsList;
         ArrayList<String> friends = new ArrayList<String>();
-        //friends.add("Neil");
+        friends.add("Babe");
+        friends.add("Bessie");
+        friends.add("Sunny");
+        friends.add("Bullwinkle");
+        friends.add("Daisy");
+        friends.add("Spot");
+        friends.add("Angus");
+        friends.add("Hereford");
+        friends.add("Bully");
+        friends.add("Tank");
+        friends.add("Earl");
+        friends.add("Bob");
+        friends.add("Diesel");
+
         //friends.add("Prakhar");
 
         // Populate ArrayList
-        try {
-            friendsList = new JSONArray(jsondata);
-            for (int i = 0; i < friendsList.length(); i++) {
-                friends.add(friendsList.getJSONObject(i).getString("name"));
-            }
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+//        try {
+//            //friendsList = new JSONArray(jsondata);
+//            for (int i = 0; i < friends.size(); i++) {
+//                //friends.add(friendsList.getJSONObject(i).getString("name"));
+//            }
+//        }catch (JSONException e){
+//            e.printStackTrace();
+//        }
 
         // Attach to listview to adapter
         ListView listView = (ListView) view.findViewById(R.id.friends_list_view);
