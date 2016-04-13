@@ -2,8 +2,11 @@ package com.example.brianberg.moomie2;
 
 import android.content.Intent;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,9 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 /**
@@ -55,7 +61,7 @@ public class MainFragment extends Fragment {
             };
             mProfileTracker.startTracking();
             Profile profile = Profile.getCurrentProfile();
-            displayWelcomeMessage(profile);
+//            displayWelcomeMessage(profile);
 
             // start a new activity
             Intent intent = new Intent(getActivity(), menu.class);
@@ -83,6 +89,32 @@ public class MainFragment extends Fragment {
 
 
     }
+
+
+    // Gets profile picture ------------------------------------------------------------------------
+//    public static Bitmap getFacebookProfilePicture(String userID){
+//
+//
+//        URL imageURL = null;
+//        try {
+//            imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        Bitmap bitmap = null;
+//        try {
+//            bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return bitmap;
+//    }
+//
+//    Bitmap bitmap = getFacebookProfilePicture(Profile.getCurrentProfile().getId());
+    // Gets profile picture ----------------------------------------------------------------------\\
 
     public void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
@@ -114,11 +146,11 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
-    public void displayWelcomeMessage(Profile profile){
-        if(profile != null){
-            mTextDetails.setText("Welcome" + profile.getName());
-        }
-    }
+//    public void displayWelcomeMessage(Profile profile){
+//        if(profile != null){
+//            mTextDetails.setText("Welcome" + profile.getName());
+//        }
+//    }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -129,13 +161,19 @@ public class MainFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.registerCallback(mCallbackManager, mCallback);
 
+        String profile;
+        //profile = Profile.getCurrentProfile().getId();
+
+        //System.out.print(profile);
+
+
         mTextDetails = (TextView) view.findViewById(R.id.textView);
 
     }
 
     public void onResume() {
         super.onResume();
-        Profile profile =Profile.getCurrentProfile();
+//        Profile profile =Profile.getCurrentProfile();
         //displayWelcomeMessage(profile);
     }
 

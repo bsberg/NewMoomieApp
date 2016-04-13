@@ -2,12 +2,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.brianberg.moomie2.Profile_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
+
+
+    <com.facebook.widget.ProfilePictureView
+        android:id="@+id/profile_Picture"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:gravity="center_horizontal"
+        android:padding="5sp"
+
+         /><facebook.widget.ProfilePictureView/>
+
+    <!--android:text="@string/profilePicture"-->
+    <!--app:is_cropped="true"-->
+    <!--app:preset_size="small"-->
+
+    <ImageView
+        android:id="@+id/android"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:contentDescription="@null" />
+
+    <!-- TODO: Update blank fragment layout -->
+
 
 </FrameLayout>

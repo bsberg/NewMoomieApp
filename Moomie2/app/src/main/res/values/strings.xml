@@ -5,8 +5,10 @@
     <string name="title_activity_best__movies">Best_Movies</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="profilePicture">profilePicture</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Profile Fragement</string>
     <string name="title_activity_menu">menu</string>
     <string name="title_activity_menuu">Menuu</string>
 
