@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.brianberg.moomie2.Friends_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/friends_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Friends" />
+        android:layout_height="wrap_content"></ListView>
 
 </FrameLayout>

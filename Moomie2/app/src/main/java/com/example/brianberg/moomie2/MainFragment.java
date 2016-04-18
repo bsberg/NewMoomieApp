@@ -141,8 +141,8 @@ public class MainFragment extends Fragment {
 
     public void onStop() {
         super.onStop();
-        mTokenTracker.stopTracking();
-        mProfileTracker.stopTracking();
+        //mTokenTracker.stopTracking();
+        //mProfileTracker.stopTracking();
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

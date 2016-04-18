@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,18 +28,12 @@ public class menu extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Add a new movie to the Moomie Database", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        Fragment fragment = new MovieFragment();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, fragment);
+        Log.d("toolsFragmentStart: ", "New Tools Fragment Loaded");
+        fragmentTransaction.commit();
 
-                // Swap to AddMovie Activity
-                Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
-                startActivity(intent);
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -79,6 +74,9 @@ public class menu extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // Swap to AddMovie Activity
+            Intent intent = new Intent(getApplicationContext(), AddMovieActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -96,13 +94,19 @@ public class menu extends AppCompatActivity
             // Handle the camera action
             fragment = new Friends_Fragment();
         } else if (id == R.id.nav_movie) {
+            //Intent intent = new Intent(this, MovieActivity.class);
+            //startActivity(intent);
             fragment = new MovieFragment();
         } else if (id == R.id.nav_profile) {
             fragment = new Profile_Fragment();
-        } else if (id == R.id.nav_manage) {
-            fragment = new Friends_Fragment();
+        } else if (id == R.id.nav_tools) {
+            Log.d("toolsFragmentStart:", "Begining Transaction");
+            fragment = new Profile_Fragment();
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            Log.d("toolsFragmentStart: ", "New Tools Fragment Created");
         } else if (id == R.id.nav_FacebookButton) {
-            fragment = new Friends_Fragment();
+            fragment = new Profile_Fragment();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
@@ -112,6 +116,7 @@ public class menu extends AppCompatActivity
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_container, fragment);
+        Log.d("toolsFragmentStart: ", "New Tools Fragment Loaded");
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
